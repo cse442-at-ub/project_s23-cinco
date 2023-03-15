@@ -38,13 +38,22 @@ app.post('/register', (req, res) => {
 
     const username = req.body.username;
     const password = req.body.password;
-
     
-    db.query("INSERT INTO Users (Username, Password) VALUES (?,?)", [username, password], (error, results) => {
-        if (error){
-        console.log(error);
-        } else res.send(results);console.log("Inserted into DB");
+    
+    db.query("SELECT * FROM Users WHERE `Username` = ? ", [username], (error, results) => {
+        if (error) throw error;
+        if (results.length > 0) {
+            //Username already exists
+            res.send({message: "Username already taken"});
+        } else {
+            db.query("INSERT INTO Users (Username, Password) VALUES (?,?)", [username, password], (error, results) => {
+                if (error){
+                console.log(error);
+                } else res.send(results);console.log("Inserted into DB");
+        })
+        }
 })
+   
 })
 
 

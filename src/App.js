@@ -20,10 +20,13 @@ function App() {
   // const[passwordReg, setPasswirdReg] = useState("");
 
   //const[som, setSom] = useState({username: "", password: ""});
+  
+
 
   const Login = details =>{
     console.log(details);
-
+    setError("");
+    setRegSuccess("");
 
     async function change_value() {
       const {data} = await Axios.post('http://localhost:3001/users', {
@@ -63,6 +66,9 @@ function App() {
   const Register = details =>{
     console.log(details);
     
+    setError("");
+    setRegSuccess("");
+    
 
     async function change_value() {
       const {data} = await Axios.post('http://localhost:3001/register', {
@@ -73,11 +79,19 @@ function App() {
     
 };
   change_value().then(val => {
- 
-    console.log(val);
-  
-    console.log("Successfully Registered");
-    setRegSuccess("Successfully Registered");
+
+
+    if(val.message){
+      console.log("Username already taken");
+      setRegSuccess("Username already taken");
+      
+      
+    } else{
+      console.log(val);
+      console.log("Successfully Registered");
+      setRegSuccess("Successfully Registered");
+    }
+      
   })
   }
 
