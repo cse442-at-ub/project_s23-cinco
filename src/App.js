@@ -3,7 +3,8 @@ import './App.css';
 //import LoginForm from './components/CreateUsers'
 import React, { useState }from 'react';
 import LoginForm from "./components/LoginForm"
-import Axios from 'axios'
+import axios from 'axios'
+
 function App() {
   //database details here
   
@@ -11,7 +12,9 @@ function App() {
   //   username: NaN,
   //   password: NaN
   // }
-  
+  // const cors = require('cors');
+
+
   const[user, setUser] = useState({username: "", password: ""});
   const[error, setError] = useState("");
   const[regSuccess, setRegSuccess] = useState("");
@@ -28,30 +31,18 @@ function App() {
     setError("");
     setRegSuccess("");
 
-    async function change_value() {
-      const {data} = await Axios.post('http://localhost:3001/users', {
+    axios.post('http://localhost/login.php', {
       username: details.username,
       password: details.password
-    })
-
-      //  adminUser.username = data[0].Username;
-      //  adminUser.password = data[0].Password;
-      // console.log(data[0].Username);
-      // console.log(data[0].Password);
-      
-      
-      return data
-  
-};
-  change_value().then(val => {
+    }).then(val => {
  
-    if(val.message){
-      console.log("Wrong Username or Password Please Try Again");
-      setError("Wrong Username or Password Please Try Again");
-      
+    if(val.data === "Wrong username or password"){
+      console.log("Wrong Username or Password");
+      setError("Wrong Username or Password");
       
     } else{
-      console.log(val);
+      
+      console.log(val.data);
       console.log("Logged in");
       setUser({
         username: details.username,
@@ -70,24 +61,18 @@ function App() {
     setRegSuccess("");
     
 
-    async function change_value() {
-      const {data} = await Axios.post('http://localhost:3001/register', {
+    axios.post('http://localhost/register.php', {
         username : details.username,
-        password : details.password})  
-      
-      return data
-    
-};
-  change_value().then(val => {
+        password : details.password
+      }).then(val => {
 
-
-    if(val.message){
+    if(val.data === "Username already taken"){
       console.log("Username already taken");
       setRegSuccess("Username already taken");
       
       
     } else{
-      console.log(val);
+      console.log(val.data);
       console.log("Successfully Registered");
       setRegSuccess("Successfully Registered");
     }
