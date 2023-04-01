@@ -19,8 +19,8 @@ const SignUpPage = () => {
     
     const isValidEmail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
 
-    axios.post('https://www-student.cse.buffalo.edu/CSE442-542/2023-Spring/cse-442b/register.php', {
-      // axios.post('http://localhost/register.php', {
+    // axios.post('https://www-student.cse.buffalo.edu/CSE442-542/2023-Spring/cse-442b/register.php', {
+      axios.post('http://localhost/register.php', {
         username : details.username,
         password : details.password,
         email : details.email,
@@ -48,7 +48,9 @@ const SignUpPage = () => {
     } else if (val.data === "Password Mismatch"){
         //console.log("Password Mismatch");
         setRegSuccess("Password Mismatch");
-
+    } else if (val.data === "Password Too Weak"){
+      setRegSuccess("Password Too Weak");
+    
     } else{
         //console.log(val.data);
         //console.log("Successfully Registered");

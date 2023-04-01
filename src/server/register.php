@@ -42,6 +42,9 @@ if (isset($_POST)) {
 	} else if ($password != $conPass) {
 		echo "Password Mismatch";
 		return;
+	} else if (!preg_match('/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*(_|[^\w])).{8,16}$/', $password)) {
+		echo "Password Too Weak";
+		return;
 	}
 	
 
