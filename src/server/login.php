@@ -49,9 +49,19 @@ if (isset($_POST)) {
 
 	$sql = "SELECT * FROM `Users` WHERE `Username` = '".$username."' AND `Password` = '".$password."' ";
 	$res = $conn->query($sql);
+
+    $sql = "SELECT user_id, Username, Password FROM Users WHERE Username = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("s", $username);
+    $stmt->execute();
+    $stmt->store_result();
+    $stmt->bind_result($id, $uname, $pw);
+
+	
     
 	//successful login
-	if ($res->num_rows > 0) {
+    $stmt->fetch();
+	if ($stmt->num_rows == 1 AND password_verify($password, $pw)) {
 		
 		//create session id for the now logged in user and store into db.
 		session_start();

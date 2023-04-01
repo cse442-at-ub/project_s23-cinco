@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/CSE442-542/2023-Spring/cse-442b/build-hashpass/static/css/main.cc45ca4b.css",
+    "main.js": "/CSE442-542/2023-Spring/cse-442b/build-hashpass/static/js/main.1785b48f.js",
+    "static/js/787.3152366b.chunk.js": "/CSE442-542/2023-Spring/cse-442b/build-hashpass/static/js/787.3152366b.chunk.js",
+    "static/media/rutgers-park.jpg": "/CSE442-542/2023-Spring/cse-442b/build-hashpass/static/media/rutgers-park.a08449ac7f4d7a726f12.jpg",
+    "static/media/dummy-post.jpg": "/CSE442-542/2023-Spring/cse-442b/build-hashpass/static/media/dummy-post.004e2737b4db1c467fc8.jpg",
+    "static/media/pfp.jpg": "/CSE442-542/2023-Spring/cse-442b/build-hashpass/static/media/pfp.a1601b9cbcd980e5170f.jpg",
+    "static/media/add-post-icon.png": "/CSE442-542/2023-Spring/cse-442b/build-hashpass/static/media/add-post-icon.27f0729d17c0897053f0.png",
+    "static/media/dummy-pfp.png": "/CSE442-542/2023-Spring/cse-442b/build-hashpass/static/media/dummy-pfp.e8014c14259e3944c886.png",
+    "index.html": "/CSE442-542/2023-Spring/cse-442b/build-hashpass/index.html",
+    "main.cc45ca4b.css.map": "/CSE442-542/2023-Spring/cse-442b/build-hashpass/static/css/main.cc45ca4b.css.map",
+    "main.1785b48f.js.map": "/CSE442-542/2023-Spring/cse-442b/build-hashpass/static/js/main.1785b48f.js.map",
+    "787.3152366b.chunk.js.map": "/CSE442-542/2023-Spring/cse-442b/build-hashpass/static/js/787.3152366b.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.cc45ca4b.css",
+    "static/js/main.1785b48f.js"
+  ]
+}

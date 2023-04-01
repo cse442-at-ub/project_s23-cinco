@@ -34,6 +34,8 @@ if (isset($_POST)) {
 	$email = $data['email'];
 	$conPass = $data['conPass'];
 
+	$hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
 	if ($username === "" | $password === "" | $email === "" | $conPass === "") {
 		echo "Missing Information";
 		return;
@@ -57,7 +59,7 @@ if (isset($_POST)) {
 		
 		$sql = "INSERT INTO Users (Username, Password, Email) VALUES (?,?,?)";
 		$stsm = $conn->prepare($sql);
-		$stsm->bind_param("sss", $username, $password, $email);
+		$stsm->bind_param("sss", $username, $hashed_password, $email);
 		$stsm->execute();
 
 		$message = "Inserted into DB";

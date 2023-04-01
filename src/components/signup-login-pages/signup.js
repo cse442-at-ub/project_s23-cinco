@@ -20,6 +20,7 @@ const SignUpPage = () => {
     const isValidEmail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
 
     axios.post('https://www-student.cse.buffalo.edu/CSE442-542/2023-Spring/cse-442b/register.php', {
+      // axios.post('http://localhost/register.php', {
         username : details.username,
         password : details.password,
         email : details.email,
