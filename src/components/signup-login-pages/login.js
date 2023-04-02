@@ -11,13 +11,13 @@ const LoginPage = ({setSessionId}) => {
 
   let navigate = useNavigate();
 
-  // useEffect(() => {
+  useEffect(() => {
 
-  //   //ENFORCE https. reroutes if using http
-  //   if(window.location.href.startsWith("http:")){
-  //     window.location.href = "https://www-student.cse.buffalo.edu/CSE442-542/2023-Spring/cse-442b/build-hashpass/login";
-  //   }
-  // })
+    //ENFORCE https. reroutes if using http
+    if(window.location.href.startsWith("http:")){
+      window.location.href = "https://www-student.cse.buffalo.edu/CSE442-542/2023-Spring/cse-442b/build-hashpass/login";
+    }
+  })
 
   const loginHandler = async (e) => {
     e.preventDefault();
@@ -28,8 +28,8 @@ const LoginPage = ({setSessionId}) => {
 
     // Login(details);
 
-    // axios.post('https://www-student.cse.buffalo.edu/CSE442-542/2023-Spring/cse-442b/login.php', {
-      axios.post('http://localhost/login.php',  {
+    axios.post('https://www-student.cse.buffalo.edu/CSE442-542/2023-Spring/cse-442b/login.php', {
+      // axios.post('http://localhost/login.php',  {
       username: details.username,
       password: details.password
     }).then(val => {
