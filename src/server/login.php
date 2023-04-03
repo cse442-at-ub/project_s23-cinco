@@ -76,13 +76,13 @@ if (isset($_POST)) {
         setcookie($cookie_name, $cookie_value, $expiration, "/CSE442-542", ".cse.buffalo.edu", 1); 
         
         //getting the user id from the user datatable so we can insert into sessions datatable
-        $row = mysqli_fetch_row($res); //columns accessible by 0-based index
-        $userID = $row[0];
+        // $row = mysqli_fetch_row($res); //columns accessible by 0-based index
+        // $userID = $row[0];
 
         //inserting the cookie into database
         $sess_id = $cookie_value;
         $mysql_exp = date("Y-m-d H:i:s", $expiration - 14400); // -4 hours to match with mysql time (daylight savings)
-        $result = mysqli_query($conn, "INSERT INTO Sessions (user_id, session_id, expiration) VALUES ('$userID', '$sess_id', '$mysql_exp') ");
+        $result = mysqli_query($conn, "INSERT INTO Sessions (user_id, session_id, expiration) VALUES ('$id', '$sess_id', '$mysql_exp') ");
 
 		//header('Location: https://www-student.cse.buffalo.edu/CSE442-542/2023-Spring/cse-442b/build/'); //redirect to home page. doesnt work?
 		echo $sess_id; //return session id to react app
