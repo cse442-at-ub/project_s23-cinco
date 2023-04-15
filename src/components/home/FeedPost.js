@@ -23,7 +23,10 @@ const FeedPost = ({pfp, posterName, title, thumbnail, numBookmarked, eventTag}) 
                     <p className = "num-bookmarked-feedview">{numBookmarked} people are following this event</p>
                     <p className="tags-feedview">{eventTag}</p>
                 </div>
+                
+
             </div>
+
 
         </div>
     </>

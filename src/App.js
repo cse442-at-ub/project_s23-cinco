@@ -2,7 +2,7 @@ import Navbar from './components/Navbar';
 import FeedArea from './components/home/FeedArea';
 import SlideoutMenu from './components/SlideoutMenu';
 
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, Redirect} from 'react-router-dom';
 import SignUpPage from './components/signup-login-pages/signup.js';
 import Profile from './components/Profile/Profile.js';
 import React, {useState} from 'react'
@@ -12,6 +12,8 @@ import PostButton from './components/createEvent/PostButton';
 import LoginPage from './components/signup-login-pages/login';
 import EditProfilePage from './components/Profile/EditProfilePage';
 import AccountSettingsPage from './components/Profile/AccountSettingsPage';
+import NewFeedArea from './components/EditDelete/NewFeedArea';
+
 
 
 
@@ -39,6 +41,11 @@ function App() {
         <Route path="/account-settings" element={<AccountSettingsPage />}></Route>
         <Route path="/login" element={<LoginPage />}></Route>
         <Route path="/signup" element={<SignUpPage />}></Route>
+        <Route path="/event-manager" element={<div className="App">
+        <Navbar displaySlideoutMenu={displaySlideoutMenu}/>
+              {showSlideout && <SlideoutMenu />}
+              <NewFeedArea />
+            </div>}></Route>
       </Routes>
 
       
