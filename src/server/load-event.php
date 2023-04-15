@@ -42,14 +42,21 @@ if (isset($_POST)) {
         }
     }
 
+    $sql = "SELECT poster, title, type, location, description, thumbnail, images FROM Posts";
+    //$sql = "SELECT Username FROM Users LIMIT 1";
     $stsm = $conn->prepare($sql);
-    $types = str_repeat("s", count($filters));
-    $stsm->bind_param($types, ...$filters);
+    // $stsm->bind_param("s", $session_id);
     $stsm->execute();
+    // $stsm->store_result();
+    // $stsm->bind_result($poster, $title, $type, $location, $description, $thumbnail, $images);
+    
+    // $stsm->close(); //need this to do another query
 
-    $resultSet = $stsm->get_result();
-    $data = $resultSet->fetch_all(MYSQLI_ASSOC);
-    echo json_encode($data);
+	$resultSet = $stsm->get_result();
+	$data = $resultSet->fetch_all(MYSQLI_ASSOC);
+	echo json_encode($data);
+
+    
 }
 
 

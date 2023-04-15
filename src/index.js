@@ -10,7 +10,7 @@ import { BrowserRouter } from 'react-router-dom';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <BrowserRouter  basename='/CSE442-542/2023-Spring/cse-442b/build'>
+    <BrowserRouter  >
       <App />
     </BrowserRouter>
   </React.StrictMode>

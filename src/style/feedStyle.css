@@ -1,37 +1,12 @@
 
 .filter-btn{
     color: white;
-    font-size: 2.0rem;
-    margin-left: 20px;
-    margin-bottom: 50px;
-    margin-top: 30px;
-}
-
-.filter-btn:hover{
-    cursor: pointer;
-}
-
-.filter-box{
-    margin-left: 20px;
+    font-size: 1.4rem;
+    text-align: right;
     margin-right: 10px;
-}
-
-.filter-label{
-    color: white;
-    font-size: 1.4rem;
-}
-
-.filter-choice{
-    margin-bottom: 15px;
-}
-
-#filter-submit-btn{
-    font-size: 1.4rem;
-    padding: 10px;
-    margin-top: 10px;
     margin-bottom: 50px;
-    margin-left: 20px;
-}
+    margin-top: 10px;
+  }
   
 .feed-area{
     width: 100%;
@@ -117,6 +92,10 @@
 @media screen and (min-width: 400px){
     .title-feedview{
         font-size: 2.2rem;
+    }
+    .filter-btn{
+        font-size: 2.0rem;
+        margin-right: 50px;
     }
 }
 
