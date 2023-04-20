@@ -6,17 +6,30 @@ import LikeButton from '../../images/thumbup.png'
 import ShareButton from '../../images/share-button.png'
 import CommentButton from '../../images/comment-button.png'
 import PostButton from '../createEvent/PostButton';
+import AddComment from '../event-popup/add-comment';
 
 
 const FeedPost = ({post_id, pfp, posterName, title, thumbnail, numBookmarked, eventTag, allowClickEvent}) => {
     
     const [showEventPopup, setEventPopup] = useState(false)
+    const [showCommentPopup, setCommentPopup] = useState(false)
     let postFeedView = "post-feedview"
 
     function displayEventPopup(){
         setEventPopup(!showEventPopup)
 
         if (showEventPopup){
+            postFeedView = "post-feedview-opaque"
+        }
+        else{
+            postFeedView = "post-feedview"
+        }
+    }
+
+    function displayCommentPopup(){
+        setCommentPopup(!showCommentPopup)
+
+        if (showCommentPopup){
             postFeedView = "post-feedview-opaque"
         }
         else{
@@ -70,7 +83,8 @@ const FeedPost = ({post_id, pfp, posterName, title, thumbnail, numBookmarked, ev
             {showEventPopup && <img className='like-event-button'src={LikeButton}></img>}
             {showEventPopup && <img className='dislike-event-button'src={LikeButton}></img>}
             {showEventPopup && <img className='share-event-button'src={ShareButton}></img>}
-            {showEventPopup && <img className='comment-event-button'src={CommentButton}></img>}
+            {showEventPopup && <img className='comment-event-button'src={CommentButton} onClick= {displayCommentPopup} ></img>}
+            {showEventPopup && (<AddComment post_id = {post_id}/>)}
             {showEventPopup && (<EventPopup post_id = {post_id} pfp={pfp} posterName={posterName} title={title} thumbnail={thumbnail} numBookmarked={numBookmarked} eventTag={eventTag}/>)}
         </div>
         {showEventPopup && <div className='event-popup-background' onClick={displayEventPopup}></div>}

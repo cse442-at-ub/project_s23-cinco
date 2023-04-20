@@ -47,6 +47,7 @@
     position: relative;
     left: -32%;
     bottom: -640px;
+    z-index: 2;
 }
 
 .poster-pfp-popup-feedview{
