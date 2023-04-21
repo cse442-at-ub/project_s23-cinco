@@ -43,6 +43,11 @@ const FeedPost = ({post_id, pfp, posterName, title, thumbnail, numBookmarked, ev
         }
     }
 
+    function displayEventandCommentPopup(){
+        displayEventPopup()
+        displayCommentPopup()
+    }
+
 
 
     const configs = {
@@ -79,13 +84,18 @@ const FeedPost = ({post_id, pfp, posterName, title, thumbnail, numBookmarked, ev
         
         <div className='event-popup-display'>
             {showEventPopup && <img className ="poster-pfp-popup-feedview" src={pfp} alt = {`${posterName}'s profile pic`}/>}
-            {showEventPopup && <img className='event-x-button'src={Xbutton} onClick={displayEventPopup}></img>}
+            {showEventPopup && <img className='event-x-button'src={Xbutton} onClick={displayEventandCommentPopup}></img>}
             {showEventPopup && <img className='like-event-button'src={LikeButton}></img>}
             {showEventPopup && <img className='dislike-event-button'src={LikeButton}></img>}
             {showEventPopup && <img className='share-event-button'src={ShareButton}></img>}
             {showEventPopup && <img className='comment-event-button'src={CommentButton} onClick= {displayCommentPopup} ></img>}
-            {showEventPopup && (<AddComment post_id = {post_id}/>)}
+           <div className = 'comment-popup'>
+            {showCommentPopup && (<AddComment post_id = {post_id}/>)}
+            {/* {showCommentPopup && <img className='comment-event-button'src={CommentButton} onClick= {displayCommentPopup} ></img>} */}
+            </div>
+            {/* {showCommentPopup && (<AddComment post_id = {post_id}/>)} */}
             {showEventPopup && (<EventPopup post_id = {post_id} pfp={pfp} posterName={posterName} title={title} thumbnail={thumbnail} numBookmarked={numBookmarked} eventTag={eventTag}/>)}
+            
         </div>
         {showEventPopup && <div className='event-popup-background' onClick={displayEventPopup}></div>}
     </>

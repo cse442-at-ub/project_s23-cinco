@@ -14,16 +14,16 @@ const AddComment = ({post_id}) => {
     const [submittable, setSubmittable] = useState(true)
     
     const navigate = useNavigate()
-    useEffect(() => {
-        // forces https connection
-        enforceHTTPS()
-        // checks if user is logged in. if not, make them log in
-        checkSessionId().then(validUser =>{
-            if(!validUser){
-                navigate("/login")
-            }
-        })
-    }, [])
+    // useEffect(() => {
+    //     // forces https connection
+    //     enforceHTTPS()
+    //     // checks if user is logged in. if not, make them log in
+    //     checkSessionId().then(validUser =>{
+    //         if(!validUser){
+    //             navigate("/login")
+    //         }
+    //     })
+    // }, [])
 
 
     async function onSubmit(e){
@@ -70,19 +70,22 @@ const AddComment = ({post_id}) => {
 
 
     return (
+        // <div className='comment-div'>
         <form id='add-comment' onSubmit={onSubmit}>
-
-            <div className='add-comment-section'>
-                <label hmtlFor="add-comment-field">Add your comment</label>
-                <input id="add-comment-field" type="text" onChange = {(e) => setComment(e.target.value)}/>
+        
+            <div className='add-comment-field'>
+                {/* <label className="add-comment-field">Add your comment</label> */}
+                <input type="text" style = {{width: "300px", height: "50px"}} onChange = {(e) => setComment(e.target.value)}/>
+                <button type = "submit" style = {{width: "100px", height: "45px"}} className='comment-submit-button' form = "add-comment">Post</button> 
             </div>
             
-
-            <Link to="/"><button type= "button" className='cancel-create-event'>Cancel</button></Link>
-            <button type = "submit" className='create-event-submit' form = "create-event">Post</button>
+            {/* <button type= "button" className='cancel-create-event'>Cancel</button>
+            <button type = "submit" className='create-event-submit' form = "create-event">Post</button> */}
 
             {!submittable && <p id="add-comment-error">Please enter a comment</p>}
+        
         </form>
+    
   )
 }
 
