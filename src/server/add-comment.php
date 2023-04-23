@@ -26,23 +26,27 @@ if (isset($_POST)) {
         return;
     }
 
-    $data = json_decode(file_get_contents('php://input'), true);
+    //$data = json_decode(file_get_contents('php://input'), true);
     
-    $post_id = $data["post_id"];
+    $post_id = $_POST['post_id'];
     // $user_id = $data["user_id"];
     // $username = $data["username"];
-    $comment = $data["comment"];
-    $date = $data["date"];
+    $comment = $_POST["comment"];
+    $date = $_POST["date"];
+    $date = intdiv($date, 1000);
+    $date = $date - 14400;
+    $date = date("Y-m-d H:i:s", $date);
 
     $session_id = $_COOKIE["session"];
 
-    $sql = "SELECT u.Username u.user_id FROM Sessions s JOIN Users u USING (user_id) WHERE session_id = (?) LIMIT 1";
+    $sql = "SELECT Username, user_id FROM Sessions JOIN Users USING (user_id) WHERE session_id = (?) LIMIT 1";
     $stsm = $conn->prepare($sql);
     $stsm->bind_param("s", $session_id);
     $stsm->execute();
     $stsm->bind_result($username, $user_id);
     $stsm->fetch();
     $stsm->close(); //need this to do another query
+    
 
     
     $sql = "INSERT INTO Comments (post_id, user_id, username, comment, date) VALUES (?, ?, ?, ?, ?)";
@@ -50,6 +54,7 @@ if (isset($_POST)) {
     $stsm = $conn->prepare($sql);
     $stsm->bind_param("iisss", $post_id, $user_id, $username, $comment, $date);
     $stsm->execute();
+    //echo $post_id, $user_id, $username, $comment, $date;
     // $stsm->store_result();
     // $stsm->bind_result($poster, $title, $type, $location, $description, $thumbnail, $images);
     

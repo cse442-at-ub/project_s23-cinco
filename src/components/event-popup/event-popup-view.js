@@ -43,8 +43,21 @@ const EventPopup = ({post_id, pfp, posterName, title, thumbnail, numBookmarked, 
 
   }, [comment]);
 
+  function discordDate(omg) {
+    const formatter = new Intl.DateTimeFormat('en-us', {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: 'numeric',
+      minute: 'numeric',
+      hour12: true,
+    })
+    
+    const iStillDontUnderstandWhyAnyoneThoughtMonthDayYearWasAGoodIdeaForADateFormatButWhatDoIKnow
+      = formatter.format(new Date(omg))
 
-
+    return iStillDontUnderstandWhyAnyoneThoughtMonthDayYearWasAGoodIdeaForADateFormatButWhatDoIKnow
+  }
 
 
 
@@ -76,9 +89,10 @@ const EventPopup = ({post_id, pfp, posterName, title, thumbnail, numBookmarked, 
                     return (
                       <>
                       <p className='commenter'> </p>
-                          <p className='comment-time-stamp'>{comment[idx].date}</p>
+                          <p className='comment-time-stamp'>{discordDate(comment[idx].date)}</p>
                           <img className='comments-pfp' src = {pfp}></img>
                           <p className='commenter-username'>{comment[idx].username} :</p>
+                          <meta charset="UTF-8" />
                           <p className='the-comment'>{comment[idx].comment}</p>
                           {/* <p > {pfp} posterName = {comment[idx].user_id} comment = {comment[idx].comment} date = {comment[idx].date}</p > */}
                       </>

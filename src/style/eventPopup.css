@@ -51,15 +51,23 @@
 }
 .add-comment-field{
     bottom: -528px;
-    left: 75px;
+    left: 12px;
     
     position: relative;
     z-index: 2;
 }
+
 .comment-submit-button{
-    bottom: -60px;
-    left: -80px;
+    bottom: 0px;
+    left: 328px;
     background-color: rgb(255, 255, 108);
+    position: relative;
+    z-index: 2;
+}
+.button-disable{
+    bottom: 0px;
+    left: 328px;
+    background-color: rgb(255, 255, 230);
     position: relative;
     z-index: 2;
 }
@@ -67,6 +75,7 @@
     position: fixed;
     z-index: 2;
 }
+
 
 .poster-pfp-popup-feedview{
     bottom: -50px;

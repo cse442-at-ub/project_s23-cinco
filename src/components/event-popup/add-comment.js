@@ -4,27 +4,30 @@ import { useState, useEffect } from 'react'
 import { BrowserRouter, Route, Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { enforceHTTPS, checkSessionId } from '../../App';
+import FeedPost from '../home/FeedPost';
 
 
-const AddComment = ({post_id}) => {
+const AddComment = ({post_id, closeCommentAfterSubmit}) => {
 
     
     const [comment, setComment] = useState("")
     const [commentDate, setCommentDate] = useState(new Date())
     const [submittable, setSubmittable] = useState(true)
+    const [canPost, setCanPost] = useState(true)
     
     const navigate = useNavigate()
-    // useEffect(() => {
-    //     // forces https connection
-    //     enforceHTTPS()
-    //     // checks if user is logged in. if not, make them log in
-    //     checkSessionId().then(validUser =>{
-    //         if(!validUser){
-    //             navigate("/login")
-    //         }
-    //     })
-    // }, [])
-
+    useEffect(() => {
+        // forces https connection
+        enforceHTTPS()
+        // checks if user is logged in. if not, make them log in
+        checkSessionId().then(validUser =>{
+            if(!validUser){
+                navigate("/login")
+            }
+        })
+    }, [])
+    
+    
 
     async function onSubmit(e){
         e.preventDefault()
@@ -32,6 +35,7 @@ const AddComment = ({post_id}) => {
         //Check input for users
         //might have to use google api to validate address
         //might have to check date so it's not before current
+        
         if(comment === ""){
             setSubmittable(false)
             return
@@ -54,7 +58,9 @@ const AddComment = ({post_id}) => {
             return
         }
 
-        console.log(response.data)
+        
+        
+        closeCommentAfterSubmit()
 
         /*
         // used for testing
@@ -67,22 +73,46 @@ const AddComment = ({post_id}) => {
         console.log(eventImages)
         */
     }
+    function buttonDisable(){
+        document.querySelector("Button").disabled = true;
+    }
+    function buttonEnable(){
+        document.querySelector("Button").disabled = false;
+    }
 
+    useEffect(() => {
+        // forces https connection
+       
+        // checks if user is logged in. if not, make them log in
+        if (comment === "") {
+            setCanPost(false)
+            
+        }
+        else {
+            setCanPost(true)
+            console.log(comment)
+        }
+    }, [comment])
+    
 
     return (
         // <div className='comment-div'>
-        <form id='add-comment' onSubmit={onSubmit}>
+        <form id='add-comment' style = {{width: "100px"}}  onSubmit={onSubmit}>
         
-            <div className='add-comment-field'>
+            <div className='add-comment-field' style = {{width: "20px"}}>
                 {/* <label className="add-comment-field">Add your comment</label> */}
-                <input type="text" style = {{width: "300px", height: "50px"}} onChange = {(e) => setComment(e.target.value)}/>
-                <button type = "submit" style = {{width: "100px", height: "45px"}} className='comment-submit-button' form = "add-comment">Post</button> 
+                <textarea type="text" placeholder = "Please enter your comment here..." style = {{width: "420px", height: "60px"}} rows="4" cols="50"onChange = {(e) => setComment(e.target.value)}/>
+                {canPost && <button type = "submit" style = {{width: "100px", height: "45px"}} className='comment-submit-button' >Post</button>}
+                {!canPost && <button type = "submit" style = {{width: "100px", height: "45px"}} className='button-disable' disabled >Post</button>}
+                
+                
             </div>
             
             {/* <button type= "button" className='cancel-create-event'>Cancel</button>
             <button type = "submit" className='create-event-submit' form = "create-event">Post</button> */}
 
-            {!submittable && <p id="add-comment-error">Please enter a comment</p>}
+            {/* {!submittable && buttonDisable()}
+            {submittable && buttonEnable()} */}
         
         </form>
     
