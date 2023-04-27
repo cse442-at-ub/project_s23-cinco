@@ -25,8 +25,23 @@ const EventPopup = ({post_id, pfp, posterName, title, thumbnail, numBookmarked, 
     )
   }
 
+  const [description, setDescription] = useState([]);
+
+  useEffect(() => {
+
+    axios.post("http://localhost/load-description.php", post_id)
+    // axios.get("http://localhost/load-event.php")
+    .then(val => {
+
+      if(val.data !== "Nothing"){
+        setDescription(val.data)
+      }
+      
+      })
+
+  }, [description]);
+
   const [comment, setComment] = useState([]);
-  const[error, setError] = useState("");
 
   useEffect(() => {
 
@@ -70,14 +85,27 @@ const EventPopup = ({post_id, pfp, posterName, title, thumbnail, numBookmarked, 
           <div className='description-box-container'>
             <p className='description-box-title'>Description</p>
             <p className='description'>
-                Come to the event for tons of fun and games!
+            {description.map((value, idx) => {
+                    return (
+                      <>
+                          {description[idx].description}
+                      </>
+                    )
+                    })}
+                
             </p>
           </div>
 
           <div className='location-box-container'>
             <p className='location-box-title'>Location</p>
             <p className='location'>
-                madison square garden
+            {description.map((value, idx) => {
+                    return (
+                      <>
+                          {description[idx].location}
+                      </>
+                    )
+                    })}
             </p>
           </div>
 

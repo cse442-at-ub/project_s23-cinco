@@ -16,16 +16,16 @@ const AddComment = ({post_id, closeCommentAfterSubmit}) => {
     const [canPost, setCanPost] = useState(true)
     
     const navigate = useNavigate()
-    useEffect(() => {
-        // forces https connection
-        enforceHTTPS()
-        // checks if user is logged in. if not, make them log in
-        checkSessionId().then(validUser =>{
-            if(!validUser){
-                navigate("/login")
-            }
-        })
-    }, [])
+    // useEffect(() => {
+    //     // forces https connection
+    //     enforceHTTPS()
+    //     // checks if user is logged in. if not, make them log in
+    //     checkSessionId().then(validUser =>{
+    //         if(!validUser){
+    //             navigate("/login")
+    //         }
+    //     })
+    // }, [])
     
     
 

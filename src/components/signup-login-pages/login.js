@@ -13,15 +13,15 @@ const LoginPage = ({setSessionId}) => {
   let navigate = useNavigate();
 
   
-  useEffect(() => {
-    enforceHTTPS()
-    //checks if a valid user is logged in
-    checkSessionId().then(validUser =>{
-      if(validUser){
-        navigate("/")
-      }
-    })
-  }, [])
+  // useEffect(() => {
+  //   enforceHTTPS()
+  //   //checks if a valid user is logged in
+  //   checkSessionId().then(validUser =>{
+  //     if(validUser){
+  //       navigate("/")
+  //     }
+  //   })
+  // }, [])
 
   const loginHandler = async (e) => {
     e.preventDefault();
