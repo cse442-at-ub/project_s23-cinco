@@ -366,6 +366,31 @@
         align-self:flex-start;
         position: relative;
     }
+    .add-comment-field{
+        bottom: -528px;
+        left: 12px;
+        position: relative;
+        z-index: 2;
+    }
+    
+    .comment-submit-button{
+        bottom: 0px;
+        left: 328px;
+        background-color: rgb(255, 255, 108);
+        position: relative;
+        z-index: 2;
+    }
+    .button-disable{
+        bottom: 0px;
+        left: 328px;
+        background-color: rgb(255, 255, 230);
+        position: relative;
+        z-index: 2;
+    }
+    .comment-popup{
+        position: fixed;
+        z-index: 2;
+    }
     .like-event-button{
         all:unset;
         border-radius: 50%;
