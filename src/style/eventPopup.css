@@ -64,24 +64,29 @@
     bottom: -640px;
     z-index: 2;
 }
-.add-comment-field{
-    bottom: -528px;
+textarea.add-comment-field{
+    bottom: -568px;
     left: 12px;
-    
+    width: 420px;
+    height: 60px;
     position: relative;
     z-index: 2;
 }
 
-.comment-submit-button{
-    bottom: 0px;
-    left: 328px;
+button.comment-submit-button{
+    bottom: -568px;
+    left: 340px;
+    width: 100px;
+    height: 45px;
     background-color: rgb(255, 255, 108);
     position: relative;
     z-index: 2;
 }
-.button-disable{
-    bottom: 0px;
-    left: 328px;
+button.button-disable{
+    bottom: -568px;
+    left: 340px;
+    width: 100px;
+    height: 45px;
     background-color: rgb(255, 255, 230);
     position: relative;
     z-index: 2;
@@ -366,23 +371,29 @@
         align-self:flex-start;
         position: relative;
     }
-    .add-comment-field{
-        bottom: -528px;
+    textarea.add-comment-field{
+        width: 370px;
+        height: 60px;
+        bottom: -530px;
         left: 12px;
         position: relative;
         z-index: 2;
     }
     
-    .comment-submit-button{
-        bottom: 0px;
-        left: 328px;
+    button.comment-submit-button{
+        bottom: -533px;
+        left: 300px;
+        width: 85px;
+        height: 42px;
         background-color: rgb(255, 255, 108);
         position: relative;
         z-index: 2;
     }
-    .button-disable{
-        bottom: 0px;
-        left: 328px;
+    button.button-disable{
+        bottom: -533px;
+        left: 300px;
+        width: 85px;
+        height: 42px;
         background-color: rgb(255, 255, 230);
         position: relative;
         z-index: 2;
@@ -460,6 +471,33 @@
         align-self:flex-start;
         position: relative;
         margin-left: -10%;
+        z-index: 2;
+    }
+    textarea.add-comment-field{
+        width: 320px;
+        height: 60px;
+        bottom: -530px;
+        left: 12px;
+        position: relative;
+        z-index: 2;
+    }
+    
+    button.comment-submit-button{
+        bottom: -533px;
+        left: 300px;
+        width: 85px;
+        height: 42px;
+        background-color: rgb(255, 255, 108);
+        position: relative;
+        z-index: 2;
+    }
+    button.button-disable{
+        bottom: -533px;
+        left: 300px;
+        width: 85px;
+        height: 42px;
+        background-color: rgb(255, 255, 230);
+        position: relative;
         z-index: 2;
     }
     .like-counter{
@@ -547,6 +585,33 @@
         width: 40px;
         position: relative;
         top: 50px;
+    }
+    textarea.add-comment-field{
+        width: 215px;
+        height: 60px;
+        bottom: -490px;
+        left: 12px;
+        position: relative;
+        z-index: 2;
+    }
+    
+    button.comment-submit-button{
+        bottom: -450px;
+        left: 240px;
+        width: 85px;
+        height: 42px;
+        background-color: rgb(255, 255, 108);
+        position: relative;
+        z-index: 2;
+    }
+    button.button-disable{
+        bottom: -450px;
+        left: 240px;
+        width: 85px;
+        height: 42px;
+        background-color: rgb(255, 255, 230);
+        position: relative;
+        z-index: 2;
     }
     .like-counter{
         position: relative;

@@ -9,15 +9,15 @@ const SlideoutMenu = () => {
 
   const [loggedin, setLoggedin] = useState(false);
 
-  useEffect(() => {
-    // forces https connection
-    // checks if user is logged in. If so, set state
-    checkSessionId().then(validUser =>{
-        if(validUser){
-            setLoggedin(true)
-        }
-    })
-  }, [])
+  // useEffect(() => {
+  //   // forces https connection
+  //   // checks if user is logged in. If so, set state
+  //   checkSessionId().then(validUser =>{
+  //       if(validUser){
+  //           setLoggedin(true)
+  //       }
+  //   })
+  // }, [])
 
   const Button = (props) => {
     return(
