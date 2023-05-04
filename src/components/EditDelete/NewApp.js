@@ -4,10 +4,10 @@ import {Sample} from '../../components/Sample';
 import NewFeedArea from './NewFeedArea'; 
 import React from 'react';
 import {  Routes, Route, Navigate } from 'react-router-dom';
-function App() {
+function NewApp() {
   return (
     <div>
-    <div className="App">
+    <div className="NewApp">
       <Navbar />
       <p className="filter-btn">Filter</p>
         <Routes>
@@ -28,4 +28,4 @@ function App() {
   );
 }
 
-export default App;
+export default NewApp;

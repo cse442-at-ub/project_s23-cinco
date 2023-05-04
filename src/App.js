@@ -72,11 +72,16 @@ function App() {
         <Route path='/mobile-volunteer-leaderboard' element={<MobileVolunteerLeaderboard/>}></Route>
         <Route path='/mobile-food-leaderboard' element={<MobileFoodLeaderboard/>}></Route>
         <Route path='/mobile-entertainment-leaderboard' element={<MobileEntertainmentLeaderboard/>}></Route>
-        <Route path="/event-manager" element={<div className="App">
-        <Navbar displaySlideoutMenu={displaySlideoutMenu}/>
+        <Route path="/event-manager" element={
+            <div className="NewApp">
+              <Navbar displaySlideoutMenu={displaySlideoutMenu}/>
               {showSlideout && <SlideoutMenu />}
-              <NewFeedArea />
-        </div>}></Route>
+              <NewFeedArea showFilterButton={true} query={""}/>
+              <PostButton/>
+            </div>
+          }>
+            
+          </Route>
         <Route path="/tokens" element={<Tokensview/>}></Route>
       </Routes>
 
@@ -88,15 +93,15 @@ function App() {
 export default App;
 
 
-// export function enforceHTTPS(){
-//   if(window.location.href.startsWith("http:")){
-//     window.location.href = window.location.href.replace("http", "https");
-//   }
-// }
+export function enforceHTTPS(){
+  if(window.location.href.startsWith("http:")){
+    window.location.href = window.location.href.replace("http", "https");
+  }
+}
 
 //boolean function that returns true if user has valid session
 export async function checkSessionId(){
-  const response = await axios.get("http://localhost/verify-session.php")
+  const response = await axios.get("https://www-student.cse.buffalo.edu/CSE442-542/2023-Spring/cse-442b/verify-session.php")
   
   //no session cookie. make user sign in (again) to go to page
   //protected routes won't work since you should always check if session is expired or not 

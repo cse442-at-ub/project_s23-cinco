@@ -75,7 +75,7 @@ const FeedArea = ({showFilterButton, query}) => {
 
       let siteURL = "https://www-student.cse.buffalo.edu/CSE442-542/2023-Spring/cse-442b/load-event.php"
       let localURL= "http://localhost/load-event.php"
-      axios.post(localURL, fd)
+      axios.post(siteURL, fd)
       // axios.get("http://localhost/load-event.php")
       .then(val => {
 
